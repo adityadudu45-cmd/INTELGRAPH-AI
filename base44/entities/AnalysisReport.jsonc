@@ -1,0 +1,47 @@
+{
+  "name": "AnalysisReport",
+  "type": "object",
+  "properties": {
+    "investigation_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Draft",
+        "Final"
+      ],
+      "enumColors": [
+        "gray",
+        "green"
+      ]
+    },
+    "sections_json": {
+      "type": "string",
+      "description": "Serialised report sections and included records"
+    },
+    "ai_summary": {
+      "type": "string"
+    },
+    "version": {
+      "type": "number"
+    },
+    "generated_by_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "investigation_id",
+    "status"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": false
+  }
+}

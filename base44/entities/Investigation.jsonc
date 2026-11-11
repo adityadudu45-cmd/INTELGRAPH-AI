@@ -1,0 +1,74 @@
+{
+  "name": "Investigation",
+  "type": "object",
+  "properties": {
+    "case_code": {
+      "type": "string",
+      "description": "Unique synthetic case reference, e.g. IG-2026-014"
+    },
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Draft",
+        "Active",
+        "Under Review",
+        "Completed",
+        "Archived"
+      ],
+      "enumColors": [
+        "gray",
+        "green",
+        "yellow",
+        "blue",
+        "gray"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "red"
+      ]
+    },
+    "analyst_emails": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Synthetic analyst references"
+    },
+    "opened_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "case_code",
+    "title",
+    "status"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": false
+  }
+}

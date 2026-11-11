@@ -1,0 +1,121 @@
+{
+  "name": "TimelineEvent",
+  "type": "object",
+  "properties": {
+    "investigation_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "event_time": {
+      "type": "string",
+      "description": "ISO datetime of the synthetic event; empty when unknown"
+    },
+    "timestamp_confidence": {
+      "type": "string",
+      "enum": [
+        "Exact",
+        "Approximate",
+        "Unknown"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "gray"
+      ]
+    },
+    "event_category": {
+      "type": "string",
+      "enum": [
+        "Incident",
+        "Transaction",
+        "Communication metadata",
+        "Observation",
+        "Meeting",
+        "Document"
+      ],
+      "enumColors": [
+        "red",
+        "yellow",
+        "blue",
+        "purple",
+        "green",
+        "gray"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "document_id": {
+      "type": "string"
+    },
+    "entity_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "event_category",
+    "investigation_id"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

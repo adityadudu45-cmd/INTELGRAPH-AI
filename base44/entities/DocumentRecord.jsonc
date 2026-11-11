@@ -1,0 +1,126 @@
+{
+  "name": "DocumentRecord",
+  "type": "object",
+  "properties": {
+    "investigation_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "file_name": {
+      "type": "string"
+    },
+    "file_uri": {
+      "type": "string",
+      "description": "Private storage URI or public URL"
+    },
+    "file_type": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "FIR-style incident summary",
+        "CDR-style interaction metadata",
+        "Simulated financial transactions",
+        "Simulated surveillance observation",
+        "Intelligence report"
+      ],
+      "enumColors": [
+        "orange",
+        "blue",
+        "yellow",
+        "purple",
+        "green"
+      ]
+    },
+    "processing_status": {
+      "type": "string",
+      "enum": [
+        "Uploaded",
+        "Processing",
+        "Completed",
+        "Needs Review",
+        "Failed"
+      ],
+      "enumColors": [
+        "gray",
+        "yellow",
+        "green",
+        "orange",
+        "red"
+      ]
+    },
+    "extracted_text": {
+      "type": "string"
+    },
+    "extraction_summary": {
+      "type": "string"
+    },
+    "page_count": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "title",
+    "processing_status",
+    "investigation_id"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

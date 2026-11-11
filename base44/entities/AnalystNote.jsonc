@@ -1,0 +1,48 @@
+{
+  "name": "AnalystNote",
+  "type": "object",
+  "properties": {
+    "investigation_id": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "note_type": {
+      "type": "string",
+      "enum": [
+        "General note",
+        "Review decision",
+        "Conclusion",
+        "AI conversation"
+      ],
+      "enumColors": [
+        "gray",
+        "yellow",
+        "blue",
+        "purple"
+      ]
+    },
+    "related_entity_id": {
+      "type": "string"
+    },
+    "ai_question": {
+      "type": "string",
+      "description": "Question text when the note records an AI exchange"
+    },
+    "author_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "content",
+    "note_type",
+    "investigation_id"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": false
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "UserProfile",
+  "type": "object",
+  "properties": {
+    "display_name": {
+      "type": "string",
+      "description": "Name shown in the workspace"
+    },
+    "app_role": {
+      "type": "string",
+      "enum": [
+        "Administrator",
+        "Analyst",
+        "Viewer"
+      ],
+      "enumColors": [
+        "orange",
+        "blue",
+        "gray"
+      ],
+      "description": "Workspace profile used for interface permissions"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Demonstration unit or department"
+    },
+    "analyst_code": {
+      "type": "string",
+      "description": "Synthetic analyst reference code"
+    }
+  },
+  "required": [
+    "display_name",
+    "app_role"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": false
+  }
+}

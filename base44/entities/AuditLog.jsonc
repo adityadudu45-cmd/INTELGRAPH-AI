@@ -1,0 +1,48 @@
+{
+  "name": "AuditLog",
+  "type": "object",
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "description": "Category such as case, import, entity, report"
+    },
+    "action": {
+      "type": "string"
+    },
+    "resource_type": {
+      "type": "string"
+    },
+    "resource_id": {
+      "type": "string"
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "Success",
+        "Failure",
+        "Denied"
+      ],
+      "enumColors": [
+        "green",
+        "red",
+        "yellow"
+      ]
+    },
+    "details": {
+      "type": "string"
+    },
+    "actor_email": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "action",
+    "outcome"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": false,
+    "delete": false
+  }
+}

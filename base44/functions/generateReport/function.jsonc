@@ -1,0 +1,4 @@
+{
+  "name": "generateReport",
+  "entry": "entry.ts"
+}

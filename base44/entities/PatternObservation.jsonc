@@ -1,0 +1,73 @@
+{
+  "name": "PatternObservation",
+  "type": "object",
+  "properties": {
+    "investigation_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "dataset": {
+      "type": "string"
+    },
+    "detection_method": {
+      "type": "string"
+    },
+    "explanation": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "enumColors": [
+        "red",
+        "yellow",
+        "green"
+      ]
+    },
+    "confidence_note": {
+      "type": "string"
+    },
+    "limitations": {
+      "type": "string"
+    },
+    "supporting_record_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "Unreviewed",
+        "Acknowledged",
+        "Dismissed"
+      ],
+      "enumColors": [
+        "yellow",
+        "green",
+        "gray"
+      ]
+    },
+    "generated_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "investigation_id",
+    "detection_method"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": false
+  }
+}

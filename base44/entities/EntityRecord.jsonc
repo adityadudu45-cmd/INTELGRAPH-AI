@@ -1,0 +1,130 @@
+{
+  "name": "EntityRecord",
+  "type": "object",
+  "properties": {
+    "investigation_id": {
+      "type": "string"
+    },
+    "display_label": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Individual",
+        "Organization",
+        "Vehicle",
+        "Location",
+        "Phone Identifier",
+        "Transaction Identifier",
+        "Event"
+      ],
+      "enumColors": [
+        "orange",
+        "blue",
+        "purple",
+        "green",
+        "gray",
+        "yellow",
+        "pink"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Synthetic identifier such as plate, number or reference code"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_reference": {
+      "type": "string"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "Unreviewed",
+        "Under Review",
+        "Verified Sample Record",
+        "Rejected",
+        "Needs Correction"
+      ],
+      "enumColors": [
+        "gray",
+        "yellow",
+        "green",
+        "red",
+        "orange"
+      ]
+    },
+    "confidence": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "display_label",
+    "category",
+    "investigation_id"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

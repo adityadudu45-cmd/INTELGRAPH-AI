@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   INTELGRAPH AI — BLACK VOID / RED NEON DESIGN SYSTEM
+   ============================================================ */
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 100%;
+
+    --card: 240 12% 4%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 12% 5%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 346 100% 50%;
+    --primary-foreground: 0 0% 3%;
+
+    --secondary: 240 8% 10%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 240 6% 11%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 349 100% 55%;
+    --accent-foreground: 0 0% 3%;
+
+    --destructive: 352 100% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 13%;
+    --input: 0 0% 16%;
+    --ring: 346 100% 50%;
+
+    --chart-1: 346 100% 50%;
+    --chart-2: 349 100% 74%;
+    --chart-3: 347 100% 32%;
+    --chart-4: 0 0% 68%;
+    --chart-5: 344 100% 88%;
+
+    --radius: 0.5rem;
+
+    --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Chakra Petch', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    /* identity tokens */
+    --void: 0 0% 2%;
+    --surface: 240 12% 6%;
+    --neon: 346 100% 50%;
+    --neon-bright: 349 100% 55%;
+    --crimson: 347 100% 27%;
+    --neon-glow: 255 0 60;
+
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 240 5% 65%;
+    --sidebar-primary: 346 100% 50%;
+    --sidebar-primary-foreground: 0 0% 3%;
+    --sidebar-accent: 240 8% 9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 11%;
+    --sidebar-ring: 346 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      radial-gradient(70rem 44rem at 8% -12%, hsl(var(--neon) / 0.10), transparent 62%),
+      radial-gradient(56rem 38rem at 96% 4%, hsl(var(--crimson) / 0.16), transparent 64%),
+      radial-gradient(46rem 40rem at 50% 118%, hsl(var(--neon) / 0.07), transparent 66%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--neon) / 0.32);
+    color: hsl(0 0% 100%);
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading tracking-tight;
+  }
+
+  :focus-visible {
+    outline: 1px solid hsl(var(--neon) / 0.9);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .ig-panel {
+    @apply rounded-lg border border-border/80 bg-card/70 backdrop-blur-sm;
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.04);
+  }
+
+  .ig-panel-lift {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .ig-panel-lift:hover {
+    border-color: hsl(var(--neon) / 0.45);
+    box-shadow: 0 0 0 1px hsl(var(--neon) / 0.14), 0 24px 60px -30px rgb(var(--neon-glow) / 0.55);
+  }
+
+  /* Holographic glass surface — used on marketing panels and floating HUD cards */
+  .ig-holo {
+    background:
+      linear-gradient(155deg, hsl(0 0% 100% / 0.055), hsl(0 0% 100% / 0.012) 42%, hsl(var(--neon) / 0.05)),
+      hsl(240 12% 5% / 0.72);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.08),
+      0 30px 80px -50px rgb(var(--neon-glow) / 0.7);
+    backdrop-filter: blur(14px);
+  }
+
+  .ig-label {
+    @apply text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground;
+  }
+
+  .ig-mono {
+    @apply font-mono text-[12px] tracking-tight;
+  }
+
+  .ig-grid-lines {
+    background-image:
+      linear-gradient(to right, hsl(var(--neon) / 0.09) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--neon) / 0.09) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .ig-grid-fine {
+    background-image:
+      linear-gradient(to right, hsl(0 0% 100% / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 100% / 0.045) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .ig-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .ig-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .ig-scroll::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-border;
+  }
+  .ig-scroll::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--neon) / 0.5);
+  }
+
+  /* clipped corner — futuristic interface frame */
+  .ig-clip {
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  }
+
+  .ig-text-glow {
+    text-shadow: 0 0 26px hsl(var(--neon) / 0.45), 0 0 60px hsl(var(--neon) / 0.2);
+  }
+
+  .ig-neon-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--neon) / 0.7), transparent);
+  }
+
+  .ig-edge-fade {
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+}
+
+/* ---------------- live indicator ---------------- */
+.ig-live-dot {
+  position: relative;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: hsl(var(--neon));
+  box-shadow: 0 0 10px hsl(var(--neon) / 0.9);
+}
+.ig-live-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: hsl(var(--neon));
+  animation: ig-pulse-ring 2.4s ease-out infinite;
+}
+
+/* ---------------- scroll reveal ---------------- */
+.ig-reveal {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.ig-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------- decorative layers ---------------- */
+.ig-vignette {
+  background: radial-gradient(70% 60% at 50% 40%, transparent 40%, hsl(0 0% 0% / 0.75) 100%);
+}
+
+.ig-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, hsl(0 0% 100% / 0.028) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+}
+
+/* ---------------- keyframes ---------------- */
+@keyframes ig-pulse-ring {
+  0% { opacity: 0.9; transform: scale(0.82); }
+  70% { opacity: 0; transform: scale(2); }
+  100% { opacity: 0; transform: scale(2); }
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -14px, 0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.42; }
+  50% { opacity: 0.85; }
+}
+
+@keyframes grid-drift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 40px 40px, 40px 40px; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes scan-sweep {
+  0% { transform: translateY(-120%); }
+  100% { transform: translateY(620%); }
+}
+
+@keyframes dash-draw {
+  from { stroke-dashoffset: 900; }
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ig-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

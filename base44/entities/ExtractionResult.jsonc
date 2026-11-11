@@ -1,0 +1,77 @@
+{
+  "name": "ExtractionResult",
+  "type": "object",
+  "properties": {
+    "document_id": {
+      "type": "string"
+    },
+    "investigation_id": {
+      "type": "string"
+    },
+    "extraction_type": {
+      "type": "string",
+      "enum": [
+        "Person",
+        "Organization",
+        "Vehicle",
+        "Location",
+        "Date",
+        "Reference ID",
+        "Relationship",
+        "Text"
+      ],
+      "enumColors": [
+        "orange",
+        "blue",
+        "purple",
+        "green",
+        "gray",
+        "yellow",
+        "pink",
+        "gray"
+      ]
+    },
+    "value": {
+      "type": "string"
+    },
+    "source_snippet": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "Suggested",
+        "Approved",
+        "Rejected",
+        "Corrected"
+      ],
+      "enumColors": [
+        "yellow",
+        "green",
+        "red",
+        "blue"
+      ]
+    },
+    "corrected_value": {
+      "type": "string"
+    },
+    "related_entity_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "document_id",
+    "extraction_type",
+    "value",
+    "review_status"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": false
+  }
+}

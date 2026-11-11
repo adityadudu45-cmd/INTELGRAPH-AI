@@ -1,0 +1,57 @@
+{
+  "name": "DataImport",
+  "type": "object",
+  "properties": {
+    "investigation_id": {
+      "type": "string"
+    },
+    "file_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Validation failed",
+        "Imported",
+        "Cancelled"
+      ],
+      "enumColors": [
+        "red",
+        "green",
+        "gray"
+      ]
+    },
+    "total_records": {
+      "type": "number"
+    },
+    "imported_records": {
+      "type": "number"
+    },
+    "failed_records": {
+      "type": "number"
+    },
+    "duplicate_records": {
+      "type": "number"
+    },
+    "mapping_json": {
+      "type": "string"
+    },
+    "errors_json": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "file_name",
+    "status",
+    "investigation_id"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": false
+  }
+}
